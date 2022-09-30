@@ -1,4 +1,5 @@
 import pytest
+from pytest_mock import MockerFixture
 from src.data_frame_handler import DataFrameHandler
 from src.interfaces.csv_analyser_interface import CsvAnalyserInterface
 
@@ -21,7 +22,7 @@ class TestClassDataFrameHandler:
         self,
         SUT: DataFrameHandler,
         CSV_ANALYSER_STUB: CsvAnalyserInterface,
-        mocker
+        mocker: MockerFixture
     ):
         SPY = mocker.spy(CSV_ANALYSER_STUB, 'get_data_frame')
         CSV_PATH = 'any_path'
