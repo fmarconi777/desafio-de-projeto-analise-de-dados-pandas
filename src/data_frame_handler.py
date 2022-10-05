@@ -7,5 +7,6 @@ class DataFrameHandler:
         self.__CSV_ANALYSER = CSV_ANALYSER
 
     def handler(self, path: str) -> None:
-        self.__CSV_ANALYSER.get_data_frame(path)
+        data_frame = self.__CSV_ANALYSER.get_data_frame(path)
+        self.__CSV_ANALYSER.drop_null_lines(data_frame)
         return
