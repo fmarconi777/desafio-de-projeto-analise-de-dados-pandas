@@ -10,3 +10,7 @@ class CsvAnalyserInterface(ABC):
     @abstractmethod
     def drop_null_lines(self, data_frame: object) -> object:
         pass
+
+    @abstractmethod
+    def rename_columns(self, data_frame: object, renamed_columns: dict) -> object:
+        pass
