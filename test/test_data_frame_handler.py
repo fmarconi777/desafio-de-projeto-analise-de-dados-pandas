@@ -14,6 +14,9 @@ class TestClassDataFrameHandler:
         def drop_null_lines(self, data_frame: object) -> object:
             return object
 
+        def rename_columns(self, data_frame: object, renamed_columns: dict) -> object:
+            return object
+
     CSV_ANALYSER_STUB: CsvAnalyserInterface = CsvAnalyserStub()
     SUT: DataFrameHandler = DataFrameHandler(CSV_ANALYSER_STUB)
 
@@ -46,3 +49,24 @@ class TestClassDataFrameHandler:
         CSV_PATH = 'any_path'
         SUT.handler(CSV_PATH)
         SPY.assert_called_once_with(object)
+
+    @pytest.mark.parametrize(
+        "SUT, CSV_ANALYSER_STUB",
+        [(SUT, CSV_ANALYSER_STUB)]
+    )
+    def test_should_call_rename_columns_with_correct_values(
+        self,
+        SUT: DataFrameHandler,
+        CSV_ANALYSER_STUB: CsvAnalyserInterface,
+        mocker: MockerFixture
+    ):
+        SPY = mocker.spy(CSV_ANALYSER_STUB, 'rename_columns')
+        CSV_PATH = 'any_path'
+        RENAMED_COLUMNS = {
+            'cod': 'Código',
+            'nome': 'Estado',
+            'período': 'Período',
+            'valor': 'Num. mortes'
+        }
+        SUT.handler(CSV_PATH)
+        SPY.assert_called_once_with(object, RENAMED_COLUMNS)
