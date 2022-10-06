@@ -16,6 +16,8 @@ class DataFrameHandler:
             'valor': 'Num. mortes'
         }
         data_frame = self.__CSV_ANALYSER.rename_columns(data_frame, RENAMED_COLUMNS)
-        GROUPBY_PLOT_VALUES = ['Período', 'Num. mortes', 'Total de mortes por período']
-        self.__CSV_ANALYSER.groupby_sum_plot(data_frame, GROUPBY_PLOT_VALUES)
+        SUM_PLOT_VALUES = ['Período', 'Num. mortes', 'Total de mortes por período']
+        self.__CSV_ANALYSER.groupby_sum_plot(data_frame, SUM_PLOT_VALUES)
+        MEAN_PLOT_VALUES = ['Período', 'Num. mortes', 'Média de mortes por período']
+        self.__CSV_ANALYSER.groupby_mean_plot(data_frame, MEAN_PLOT_VALUES)
         return
