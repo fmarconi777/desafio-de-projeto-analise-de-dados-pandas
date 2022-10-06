@@ -20,6 +20,9 @@ class TestClassDataFrameHandler:
         def groupby_sum_plot(self, data_frame: object, groupby_plot: list[str]) -> object:
             return object
 
+        def groupby_mean_plot(self, data_frame: object, groupby_plot: list[str]) -> object:
+            return object
+
     CSV_ANALYSER_STUB: CsvAnalyserInterface = CsvAnalyserStub()
     SUT: DataFrameHandler = DataFrameHandler(CSV_ANALYSER_STUB)
 
@@ -86,6 +89,22 @@ class TestClassDataFrameHandler:
     ):
         SPY = mocker.spy(CSV_ANALYSER_STUB, 'groupby_sum_plot')
         CSV_PATH = 'any_path'
-        GROUPBY_PLOT_VALUES = ['Período', 'Num. mortes', 'Total de mortes por período']
+        SUM_PLOT_VALUES = ['Período', 'Num. mortes', 'Total de mortes por período']
         SUT.handler(CSV_PATH)
-        SPY.assert_called_once_with(object, GROUPBY_PLOT_VALUES)
+        SPY.assert_called_once_with(object, SUM_PLOT_VALUES)
+
+    @pytest.mark.parametrize(
+        "SUT, CSV_ANALYSER_STUB",
+        [(SUT, CSV_ANALYSER_STUB)]
+    )
+    def test_should_call_groupby_mean_plot_with_correct_values(
+        self,
+        SUT: DataFrameHandler,
+        CSV_ANALYSER_STUB: CsvAnalyserInterface,
+        mocker: MockerFixture
+    ):
+        SPY = mocker.spy(CSV_ANALYSER_STUB, 'groupby_mean_plot')
+        CSV_PATH = 'any_path'
+        MEAN_PLOT_VALUES = ['Período', 'Num. mortes', 'Média de mortes por período']
+        SUT.handler(CSV_PATH)
+        SPY.assert_called_once_with(object, MEAN_PLOT_VALUES)
