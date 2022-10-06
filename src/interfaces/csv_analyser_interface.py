@@ -14,3 +14,7 @@ class CsvAnalyserInterface(ABC):
     @abstractmethod
     def rename_columns(self, data_frame: object, renamed_columns: dict) -> object:
         pass
+
+    @abstractmethod
+    def groupby_sum_plot(self, data_frame: object, groupby_plot: list[str]) -> object:
+        pass
