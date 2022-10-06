@@ -1,4 +1,4 @@
-from src.interfaces.csv_analyser_interface import CsvAnalyserInterface
+from src.handlers.interfaces.csv_analyser_interface import CsvAnalyserInterface
 
 
 class DataFrameHandler:
