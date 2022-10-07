@@ -1,6 +1,6 @@
 from src.handlers.interfaces.csv_analyser_interface import CsvAnalyserInterface
 import pandas
-import matplotlib
+import matplotlib.pyplot as plt
 
 class CsvAnalyser(CsvAnalyserInterface):
 
@@ -19,11 +19,11 @@ class CsvAnalyser(CsvAnalyserInterface):
     def groupby_sum_plot(self, data_frame: pandas.DataFrame, groupby_plot: list[str], path: str) -> None:
         FILE_NAME = path.split('/')
         data_frame.groupby(groupby_plot[0])[groupby_plot[1]].sum().plot.bar(title=groupby_plot[2])
-        matplotlib.pyplot.savefig(f'images/{FILE_NAME[-1][0:-4]}')
+        plt.savefig(f'images/{FILE_NAME[-1][0:-4]}')
         return
 
     def groupby_mean_plot(self, data_frame: pandas.DataFrame, groupby_plot: list[str], path: str) -> None:
         FILE_NAME = path.split('/')
         data_frame.groupby(groupby_plot[0])[groupby_plot[1]].mean().plot(title=groupby_plot[2])
-        matplotlib.pyplot.savefig(f'images/{FILE_NAME[-1][0:-4]}')
+        plt.savefig(f'images/{FILE_NAME[-1][0:-4]}-mean')
         return
