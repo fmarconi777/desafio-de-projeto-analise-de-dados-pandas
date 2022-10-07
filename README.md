@@ -1,0 +1,1 @@
+Este projeto tem por objetivo dar início aos estudos de análise de dados com Python e Pandas
