@@ -16,9 +16,9 @@ class CsvAnalyserInterface(ABC):
         pass
 
     @abstractmethod
-    def groupby_sum_plot(self, data_frame: object, groupby_plot: list[str]) -> object:
+    def groupby_sum_plot(self, data_frame: object, groupby_plot: list[str], path: str) -> None:
         pass
 
     @abstractmethod
-    def groupby_mean_plot(self, data_frame: object, groupby_plot: list[str]) -> object:
+    def groupby_mean_plot(self, data_frame: object, groupby_plot: list[str], path: str) -> None:
         pass
