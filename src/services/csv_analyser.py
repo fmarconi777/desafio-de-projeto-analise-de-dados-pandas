@@ -9,12 +9,12 @@ class CsvAnalyser(CsvAnalyserInterface):
         return data_frame
 
     def drop_null_lines(self, data_frame: pandas.DataFrame) -> pandas.DataFrame:
-        data_frame: pandas.DataFrame = data_frame.dropna(inplace=True)
-        return data_frame
+        DATA_FRAME: pandas.DataFrame = data_frame.dropna()
+        return DATA_FRAME
 
     def rename_columns(self, data_frame: pandas.DataFrame, renamed_columns: dict) -> pandas.DataFrame:
-        data_frame:pandas.DataFrame = data_frame.rename(columns=renamed_columns)
-        return data_frame
+        DATA_FRAME:pandas.DataFrame = data_frame.rename(columns=renamed_columns)
+        return DATA_FRAME
 
     def groupby_sum_plot(self, data_frame: pandas.DataFrame, groupby_plot: list[str], path: str) -> None:
         FILE_NAME = path.split('/')
